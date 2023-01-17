@@ -1,0 +1,3 @@
+[submodule "tribes_alerts/qstat"]
+	path = tribes_alerts/qstat
+	url = https://github.com/Unity-Technologies/qstat.git
