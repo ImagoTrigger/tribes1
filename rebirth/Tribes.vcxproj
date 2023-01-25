@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{f704e949-0515-4acb-be79-1436ce8303c7}</ProjectGuid>
+    <RootNamespace>Tribes</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\$(TargetName)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Configuration)\$(TargetName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\$(TargetName)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Configuration)\$(TargetName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WINDOWS_IGNORE_PACKING_MISMATCH;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>Default</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc\;$(ProjectDir)darkstar\common\Sim\Inc\;$(ProjectDir)darkstar\console\inc\;$(ProjectDir)darkstar\Core\inc\;$(ProjectDir)darkstar\Dgfx\inc\;$(ProjectDir)darkstar\Dgfx\glide\;$(ProjectDir)darkstar\DirectX\inc\;$(ProjectDir)darkstar\DNet\inc\;$(ProjectDir)darkstar\Interior\inc\;$(ProjectDir)darkstar\Landscape\Inc\;$(ProjectDir)darkstar\Ml\Inc\;$(ProjectDir)darkstar\Sim\inc\;$(ProjectDir)darkstar\SimGui\inc\;$(ProjectDir)darkstar\SimObjects\Inc\;$(ProjectDir)darkstar\Ted\Inc\;$(ProjectDir)darkstar\Terrain\Inc\;$(ProjectDir)darkstar\Terrain2\inc\;$(ProjectDir)darkstar\Ts3\Inc\;$(ProjectDir)darkstar\VolumeDark\data\;$(ProjectDir)darkstar\volumeEdit\data\;$(ProjectDir)darkstar\Window\Inc\;$(ProjectDir)program\inc\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks />
+      <StructMemberAlignment>4Bytes</StructMemberAlignment>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <CallingConvention>StdCall</CallingConvention>
+      <DisableSpecificWarnings>4996;4703;4430;4700</DisableSpecificWarnings>
+      <AdditionalOptions>/Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;comctl32.lib;shell32.lib;advapi32.lib;uuid.lib;wsock32.lib;rpcrt4.lib;vfw32.lib;winmm.lib;ole32.lib;dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <StackReserveSize>8000000</StackReserveSize>
+      <StackCommitSize>1000000</StackCommitSize>
+    </Link>
+    <MASM>
+      <PreprocessorDefinitions>__MASM__;MSVC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </MASM>
+    <MASM>
+      <IncludePaths>$(ProjectDir)darkstar\Core\inc\;$(ProjectDir)darkstar\Dgfx\inc\;$(ProjectDir)darkstar\Ml\Inc\;%(IncludePaths)</IncludePaths>
+    </MASM>
+    <MASM>
+      <PreserveIdentifierCase>1</PreserveIdentifierCase>
+      <AdditionalOptions>/coff %(AdditionalOptions)</AdditionalOptions>
+    </MASM>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WINDOWS_IGNORE_PACKING_MISMATCH;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>Default</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc\;$(ProjectDir)darkstar\common\Sim\Inc\;$(ProjectDir)darkstar\console\inc\;$(ProjectDir)darkstar\Core\inc\;$(ProjectDir)darkstar\Dgfx\inc\;$(ProjectDir)darkstar\Dgfx\glide\;$(ProjectDir)darkstar\DirectX\inc\;$(ProjectDir)darkstar\DNet\inc\;$(ProjectDir)darkstar\Interior\inc\;$(ProjectDir)darkstar\Landscape\Inc\;$(ProjectDir)darkstar\Ml\Inc\;$(ProjectDir)darkstar\Sim\inc\;$(ProjectDir)darkstar\SimGui\inc\;$(ProjectDir)darkstar\SimObjects\Inc\;$(ProjectDir)darkstar\Ted\Inc\;$(ProjectDir)darkstar\Terrain\Inc\;$(ProjectDir)darkstar\Terrain2\inc\;$(ProjectDir)darkstar\Ts3\Inc\;$(ProjectDir)darkstar\VolumeDark\data\;$(ProjectDir)darkstar\volumeEdit\data\;$(ProjectDir)darkstar\Window\Inc\;$(ProjectDir)program\inc\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks />
+      <StructMemberAlignment>4Bytes</StructMemberAlignment>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <CallingConvention>StdCall</CallingConvention>
+      <DisableSpecificWarnings>4996;4703;4430;4700</DisableSpecificWarnings>
+      <AdditionalOptions>/Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;comctl32.lib;shell32.lib;advapi32.lib;uuid.lib;wsock32.lib;rpcrt4.lib;vfw32.lib;winmm.lib;ole32.lib;dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <StackReserveSize>8000000</StackReserveSize>
+      <StackCommitSize>1000000</StackCommitSize>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <MASM>
+      <PreprocessorDefinitions>__MASM__;MSVC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <IncludePaths>$(ProjectDir)darkstar\Core\inc\;$(ProjectDir)darkstar\Dgfx\inc\;$(ProjectDir)darkstar\Ml\Inc\;%(IncludePaths)</IncludePaths>
+      <PreserveIdentifierCase>1</PreserveIdentifierCase>
+    </MASM>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="darkstar\common\Sim\Code\baseShadowRenderImage.cpp" />
+    <ClCompile Include="darkstar\common\Sim\Code\commonPersTags.cpp" />
+    <ClCompile Include="darkstar\common\Sim\Code\ircClient.cpp" />
+    <ClCompile Include="darkstar\common\Sim\Code\ircPlugin.cpp" />
+    <ClCompile Include="darkstar\common\Sim\Code\simVolumetric.cpp" />
+    <ClCompile Include="darkstar\console\code\console.cpp" />
+    <ClCompile Include="darkstar\console\code\consoleInternal.cpp" />
+    <ClCompile Include="darkstar\console\code\eval.cpp" />
+    <ClCompile Include="darkstar\console\code\GRAM.CPP" />
+    <ClCompile Include="darkstar\console\code\scan.cpp" />
+    <ClCompile Include="darkstar\console\code\tagDictionary.cpp" />
+    <ClCompile Include="darkstar\Core\code\bitset.cpp" />
+    <ClCompile Include="darkstar\Core\code\bitstream.cpp" />
+    <ClCompile Include="darkstar\Core\code\blkstrm.cpp" />
+    <ClCompile Include="darkstar\Core\code\crc16.cpp" />
+    <ClCompile Include="darkstar\Core\code\fileName.cpp" />
+    <ClCompile Include="darkstar\Core\code\filrstrm.cpp" />
+    <ClCompile Include="darkstar\Core\code\filstrm.cpp" />
+    <ClCompile Include="darkstar\Core\code\filwstrm.cpp" />
+    <ClCompile Include="darkstar\Core\code\lzhrstrm.cpp" />
+    <ClCompile Include="darkstar\Core\code\lzhuff.cpp" />
+    <ClCompile Include="darkstar\Core\code\lzhwstrm.cpp" />
+    <ClCompile Include="darkstar\Core\code\memstrm.cpp" />
+    <ClCompile Include="darkstar\Core\code\m_qsort.cpp" />
+    <ClCompile Include="darkstar\Core\code\PERSIST.CPP" />
+    <ClCompile Include="darkstar\Core\code\registry.cpp" />
+    <ClCompile Include="darkstar\Core\code\resDictionary.cpp" />
+    <ClCompile Include="darkstar\Core\code\resManager.cpp" />
+    <ClCompile Include="darkstar\Core\code\rlerstrm.cpp" />
+    <ClCompile Include="darkstar\Core\code\rlewstrm.cpp" />
+    <ClCompile Include="darkstar\Core\code\RVecAlloc.cpp" />
+    <ClCompile Include="darkstar\Core\code\streamio.cpp" />
+    <ClCompile Include="darkstar\Core\code\stringTable.cpp" />
+    <ClCompile Include="darkstar\Core\code\threadBase.cpp" />
+    <ClCompile Include="darkstar\Core\code\timer.cpp" />
+    <ClCompile Include="darkstar\Core\code\volstrm.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\b_draw.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\ddrawerr.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\fn_table.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\gdevice.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\gdmanag.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\gfxRes.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\gglidedev.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\glidein.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\glidesfc.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\glidetx.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\glLoader.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\gOGLDev.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\gOGLFn.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\gOGLSfc.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\gOGLTCache.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\gOGLTx.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\gsdevice.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_barray.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_bitmap.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_cds.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_clear.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_clip.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_ddraw.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_font.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_fontrend.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_mem.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_pal.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_point.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_sub.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\g_surfac.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\l_draw.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\palMap.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\p_edge.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\p_funcs.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\p_txcach.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\r_draw.cpp" />
+    <ClCompile Include="darkstar\Dgfx\code\writfunc.cpp" />
+    <ClCompile Include="darkstar\DNet\code\DNet.cpp" />
+    <ClCompile Include="darkstar\DNet\code\ipxnet.cpp" />
+    <ClCompile Include="darkstar\DNet\code\logfile.cpp" />
+    <ClCompile Include="darkstar\DNet\code\loopnet.cpp" />
+    <ClCompile Include="darkstar\DNet\code\UDPNet.cpp" />
+    <ClCompile Include="darkstar\DNet\code\VCProtocol.cpp" />
+    <ClCompile Include="darkstar\Interior\code\itrbit.cpp" />
+    <ClCompile Include="darkstar\Interior\code\itrcollision.cpp" />
+    <ClCompile Include="darkstar\Interior\code\itrgeometry.cpp" />
+    <ClCompile Include="darkstar\Interior\code\itrinstance.cpp" />
+    <ClCompile Include="darkstar\Interior\code\itrlighting.cpp" />
+    <ClCompile Include="darkstar\Interior\code\itrmetrics.cpp" />
+    <ClCompile Include="darkstar\Interior\code\itrrender.cpp" />
+    <ClCompile Include="darkstar\Interior\code\itrshape.cpp" />
+    <ClCompile Include="darkstar\Interior\code\polyBSPClip.cpp" />
+    <ClCompile Include="darkstar\Interior\code\tplane.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LSEditor.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LSMapper.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LSPlugin.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\ls_block.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LS_Cmplx.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LS_Exec.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LS_Fill.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LS_Fltr.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LS_IO.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LS_Math.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LS_Stack.cpp" />
+    <ClCompile Include="darkstar\Landscape\code\LS_terrain.cpp" />
+    <ClCompile Include="darkstar\Ml\Code\m_coll.cpp" />
+    <ClCompile Include="darkstar\Ml\Code\m_collision.cpp" />
+    <ClCompile Include="darkstar\Ml\Code\m_euler.cpp" />
+    <ClCompile Include="darkstar\Ml\Code\m_mulf.cpp" />
+    <ClCompile Include="darkstar\Ml\Code\m_plane.cpp" />
+    <ClCompile Include="darkstar\Ml\Code\m_quat.cpp" />
+    <ClCompile Include="darkstar\Ml\Code\m_random.cpp" />
+    <ClCompile Include="darkstar\Ml\Code\m_reduce.cpp" />
+    <ClCompile Include="darkstar\Ml\Code\template.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\chunkedBitmap.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiActiveCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\SimGuiAnimateBMA.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiArrayCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiBase.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiBitmapBox.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiBitmapCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiCanvas.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiComboBox.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiDelegate.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiEditCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\SimGuiHelpCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\SimGuiMatrixCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiPaletteCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiPersTags.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiPlugin.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiProgressCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiScrollCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiSimpleText.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiSlider.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiTestButton.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simguitestcheck.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiTestCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiTestRadial.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiTextEdit.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\SimGuiTextFormat.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiTextList.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiTextWrap.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiTimerCtrl.cpp" />
+    <ClCompile Include="darkstar\SimGui\code\simGuiTSCtrl.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\boxRender.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\fxRenderImage.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\gfxPlugin.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\ia3d.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\move.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\movPlay.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\movPlayPlugin.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\netPlugin.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\redbook.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\redbookPlugin.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\shellOpenPlugin.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\simInputPlugin.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\simLight.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\simObjectPersTags.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\simPath.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\SimPathManager.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\SimPlaceContainer.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\simSoundSequence.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\simTreePlugin.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\simWinConsolePlugin.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\soundFX.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\soundFXBuffer.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\soundFXPlugin.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\terrainPlugin.cpp" />
+    <ClCompile Include="darkstar\SimObjects\Code\toolPlugin.cpp" />
+    <ClCompile Include="darkstar\Sim\code\inspect.cpp" />
+    <ClCompile Include="darkstar\Sim\code\inspectWindow.cpp" />
+    <ClCompile Include="darkstar\Sim\code\netCSDelegate.cpp" />
+    <ClCompile Include="darkstar\Sim\code\netEventManager.cpp" />
+    <ClCompile Include="darkstar\Sim\code\netGhostManager.cpp" />
+    <ClCompile Include="darkstar\Sim\code\netPacketStream.cpp" />
+    <ClCompile Include="darkstar\Sim\code\netTemplates.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simAction.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simBase.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simCanvas.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simCollision.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simCollisionImages.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simConsoleEvent.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simConsolePlugin.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simContainer.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simCoordDB.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simDictionary.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simDynamicLight.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simev.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simGame.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simGuiConsolePlugin.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simInput.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simInputDevice.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simLightGrp.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simMovement.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simNetObject.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simPalette.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simPreLoadManager.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simResource.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simSetIterator.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simTagDictionary.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simTelnetPlugin.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simTemplates.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simTerrain.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simTimerGrp.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simToolwin.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simTreeView.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simVolume.cpp" />
+    <ClCompile Include="darkstar\Sim\code\simWorld.cpp" />
+    <ClCompile Include="darkstar\Sim\code\WinTools.cpp" />
+    <ClCompile Include="darkstar\Ted\Code\simTed.cpp" />
+    <ClCompile Include="darkstar\Ted\Code\tedPlugin.cpp" />
+    <ClCompile Include="darkstar\Ted\Code\tedwindow.cpp" />
+    <ClCompile Include="darkstar\Terrain2\code\gridToTerr.cpp" />
+    <ClCompile Include="darkstar\Terrain2\code\terrData.cpp" />
+    <ClCompile Include="darkstar\Terrain2\code\terrRender.cpp" />
+    <ClCompile Include="darkstar\Terrain\Code\grdBlock.cpp" />
+    <ClCompile Include="darkstar\Terrain\Code\grdcollision.cpp" />
+    <ClCompile Include="darkstar\Terrain\Code\grdEdgeTable.cpp" />
+    <ClCompile Include="darkstar\Terrain\Code\grdFile.cpp" />
+    <ClCompile Include="darkstar\Terrain\Code\grdHeight.cpp" />
+    <ClCompile Include="darkstar\Terrain\Code\grdHRLM.cpp" />
+    <ClCompile Include="darkstar\Terrain\Code\grdMipMake.cpp" />
+    <ClCompile Include="darkstar\Terrain\Code\grdRender.cpp" />
+    <ClCompile Include="darkstar\Terrain\Code\grdTemplate.cpp" />
+    <ClCompile Include="darkstar\Terrain\Code\viewcone.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_BoundingBox.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_camera.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_CelAnimMesh.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_color.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_light.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_material.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_matRender.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_partInstance.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_plane.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_PointArray.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_RenderContext.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_shadow.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_shape.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_shapeInst.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_template.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_transform.cpp" />
+    <ClCompile Include="darkstar\Ts3\code\ts_vertex.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwBase.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwButtonProxy.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwCanvas.cpp" />
+    <ClCompile Include="darkstar\Window\Code\GWComboBox.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwControlProxy.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwDeviceManager.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwDialog.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwEditBox.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwEditProxy.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwListBoxProxy.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwLog.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwMain.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwMenu.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwMsg.cpp" />
+    <ClCompile Include="darkstar\Window\Code\gwtool.cpp" />
+    <ClCompile Include="darkstar\Window\Code\GWTreeView.cpp" />
+    <ClCompile Include="program\code\aiGraph.cpp" />
+    <ClCompile Include="program\code\aiHelp.cpp" />
+    <ClCompile Include="program\code\aiObj.cpp" />
+    <ClCompile Include="program\code\aiPlugin.cpp" />
+    <ClCompile Include="program\code\aiSkill.cpp" />
+    <ClCompile Include="program\code\BanList.cpp" />
+    <ClCompile Include="program\code\chatmenu.cpp" />
+    <ClCompile Include="program\code\clockhud.cpp" />
+    <ClCompile Include="program\code\compasshud.cpp" />
+    <ClCompile Include="program\code\cpuSpeed.cpp" />
+    <ClCompile Include="program\code\CurWeapHud.cpp" />
+    <ClCompile Include="program\code\dataBlockManager.cpp" />
+    <ClCompile Include="program\code\debris.cpp" />
+    <ClCompile Include="program\code\decalManager.cpp" />
+    <ClCompile Include="program\code\dlgConnect.cpp" />
+    <ClCompile Include="program\code\dlgCreateServer.cpp" />
+    <ClCompile Include="program\code\dlgIRCChat.cpp" />
+    <ClCompile Include="program\code\dlgJoinGame.cpp" />
+    <ClCompile Include="program\code\dlgMainMenu.cpp" />
+    <ClCompile Include="program\code\dlgOptions.cpp" />
+    <ClCompile Include="program\code\dlgPlay.cpp" />
+    <ClCompile Include="program\code\dlgPlayerSetup.cpp" />
+    <ClCompile Include="program\code\dlgQuit.cpp" />
+    <ClCompile Include="program\code\dlgRecordings.cpp" />
+    <ClCompile Include="program\code\dropPoints.cpp" />
+    <ClCompile Include="program\code\editCamera.cpp" />
+    <ClCompile Include="program\code\explosion.cpp" />
+    <ClCompile Include="program\code\FearCSDelegate.cpp" />
+    <ClCompile Include="program\code\FearDynamicDataPlugin.cpp" />
+    <ClCompile Include="program\code\FearGuiAbort.cpp" />
+    <ClCompile Include="program\code\FearGuiArrayCtrl.cpp" />
+    <ClCompile Include="program\code\FearGuiBitmapCtrl.cpp" />
+    <ClCompile Include="program\code\FearGuiBox.cpp" />
+    <ClCompile Include="program\code\FearGuiBuddyCombo.cpp" />
+    <ClCompile Include="program\code\FearGuiCenterPrint.cpp" />
+    <ClCompile Include="program\code\FearGuiCFGButton.cpp" />
+    <ClCompile Include="program\code\FearGuiChat.cpp" />
+    <ClCompile Include="program\code\FearGuiChatDisplay.cpp" />
+    <ClCompile Include="program\code\FearGuiChatMenu.cpp" />
+    <ClCompile Include="program\code\fearGuiCMDObserve.cpp" />
+    <ClCompile Include="program\code\FearGuiCmdPanel.cpp" />
+    <ClCompile Include="program\code\FearGuiCmdTurretList.cpp" />
+    <ClCompile Include="program\code\FearGuiCmdView.cpp" />
+    <ClCompile Include="program\code\FearGuiColumns.cpp" />
+    <ClCompile Include="program\code\FearGuiCombo.cpp" />
+    <ClCompile Include="program\code\FearGuiCommandItemList.cpp" />
+    <ClCompile Include="program\code\FearGuiCommandTeamList.cpp" />
+    <ClCompile Include="program\code\fearGuiControl.cpp" />
+    <ClCompile Include="program\code\FearGuiControlsCombo.cpp" />
+    <ClCompile Include="program\code\fearGuiCrosshair.cpp" />
+    <ClCompile Include="program\code\FearGuiCurCmd.cpp" />
+    <ClCompile Include="program\code\FearGuiDialog.cpp" />
+    <ClCompile Include="program\code\FearGuiDlgBox.cpp" />
+    <ClCompile Include="program\code\FearGuiFilterCBList.cpp" />
+    <ClCompile Include="program\code\FearGuiFilterCombo.cpp" />
+    <ClCompile Include="program\code\FearGuiFilters.cpp" />
+    <ClCompile Include="program\code\FearGuiHelpCtrl.cpp" />
+    <ClCompile Include="program\code\fearGuiHudCtrl.cpp" />
+    <ClCompile Include="program\code\FearGuiHudList.cpp" />
+    <ClCompile Include="program\code\fearGuiInventory.cpp" />
+    <ClCompile Include="program\code\FearGuiInvList.cpp" />
+    <ClCompile Include="program\code\fearGuiIRCActiveTextEdit.cpp" />
+    <ClCompile Include="program\code\fearGuiIRCActiveTextFormat.cpp" />
+    <ClCompile Include="program\code\fearGuiIRCBanControl.cpp" />
+    <ClCompile Include="program\code\FearGuiIRCChanCtrl.cpp" />
+    <ClCompile Include="program\code\fearGuiIRCChannelList.cpp" />
+    <ClCompile Include="program\code\fearGuiIRCChannelPropsCtrl.cpp" />
+    <ClCompile Include="program\code\fearGuiIRCJoinControl.cpp" />
+    <ClCompile Include="program\code\FearGuiIRCNicks.cpp" />
+    <ClCompile Include="program\code\FearGuiIRCScroll.cpp" />
+    <ClCompile Include="program\code\FearGuiIRCTextEdit.cpp" />
+    <ClCompile Include="program\code\FearGuiIRCTopic.cpp" />
+    <ClCompile Include="program\code\FearGuiIRCView.cpp" />
+    <ClCompile Include="program\code\FearGuiJetHud.cpp" />
+    <ClCompile Include="program\code\fearGuiLag.cpp" />
+    <ClCompile Include="program\code\fearGuiMasterList.cpp" />
+    <ClCompile Include="program\code\FearGuiMenu.cpp" />
+    <ClCompile Include="program\code\FearGuiMenuCtrl.cpp" />
+    <ClCompile Include="program\code\FearGuiMenuDisplay.cpp" />
+    <ClCompile Include="program\code\FearGuiMissionCombo.cpp" />
+    <ClCompile Include="program\code\FearGuiMissionList.cpp" />
+    <ClCompile Include="program\code\FearGuiPage.cpp" />
+    <ClCompile Include="program\code\FearGuiPaletteCtrl.cpp" />
+    <ClCompile Include="program\code\FearGuiPlayerCombo.cpp" />
+    <ClCompile Include="program\code\FearGuiPlayerList.cpp" />
+    <ClCompile Include="program\code\fearGuiPopUpMenu.cpp" />
+    <ClCompile Include="program\code\FearGuiRadio.cpp" />
+    <ClCompile Include="program\code\FearGuiRecList.cpp" />
+    <ClCompile Include="program\code\FearGuiScoreList.cpp" />
+    <ClCompile Include="program\code\FearGuiScrollCtrl.cpp" />
+    <ClCompile Include="program\code\FearGuiServerFilterCB.cpp" />
+    <ClCompile Include="program\code\FearGuiServerInfo.cpp" />
+    <ClCompile Include="program\code\fearGuiServerList.cpp" />
+    <ClCompile Include="program\code\fearGuiShapeView.cpp" />
+    <ClCompile Include="program\code\FearGuiShellBorder.cpp" />
+    <ClCompile Include="program\code\FearGuiSimpleText.cpp" />
+    <ClCompile Include="program\code\fearGuiSkinView.cpp" />
+    <ClCompile Include="program\code\fearGuiSlider.cpp" />
+    <ClCompile Include="program\code\fearGuiSmacker.cpp" />
+    <ClCompile Include="program\code\FearGuiStandardCombo.cpp" />
+    <ClCompile Include="program\code\FearGuiSwitch.cpp" />
+    <ClCompile Include="program\code\FearGuiTabMenu.cpp" />
+    <ClCompile Include="program\code\FearGuiTestEdit.cpp" />
+    <ClCompile Include="program\code\FearGuiTextFMT.cpp" />
+    <ClCompile Include="program\code\fearGuiTextFormat.cpp" />
+    <ClCompile Include="program\code\fearGuiTextList.cpp" />
+    <ClCompile Include="program\code\FearGuiTSCommander.cpp" />
+    <ClCompile Include="program\code\FearGuiUnivButton.cpp" />
+    <ClCompile Include="program\code\FearHudArrayCtrl.cpp" />
+    <ClCompile Include="program\code\FearHudCmdObj.cpp" />
+    <ClCompile Include="program\code\FearHudInvList.cpp" />
+    <ClCompile Include="program\code\FearHudMatrixCtrl.cpp" />
+    <ClCompile Include="program\code\FearHudRadarPing.cpp" />
+    <ClCompile Include="program\code\FearMissionEditor.cpp" />
+    <ClCompile Include="program\code\FearMissionPlugin.cpp" />
+    <ClCompile Include="program\code\FearPlayerPSC.cpp" />
+    <ClCompile Include="program\code\FearPlugin.cpp" />
+    <ClCompile Include="program\code\filePlugin.cpp" />
+    <ClCompile Include="program\code\Flier.cpp" />
+    <ClCompile Include="program\code\FlyingCamera.cpp" />
+    <ClCompile Include="program\code\f_base.cpp" />
+    <ClCompile Include="program\code\gamebase.cpp" />
+    <ClCompile Include="program\code\HealthHud.cpp" />
+    <ClCompile Include="program\code\InputHandler.cpp" />
+    <ClCompile Include="program\code\interiorShape.cpp" />
+    <ClCompile Include="program\code\item.cpp" />
+    <ClCompile Include="program\code\main.cpp" />
+    <ClCompile Include="program\code\marker.cpp" />
+    <ClCompile Include="program\code\Mine.cpp" />
+    <ClCompile Include="program\code\missionObjectList.cpp" />
+    <ClCompile Include="program\code\moveable.cpp" />
+    <ClCompile Include="program\code\observerCamera.cpp" />
+    <ClCompile Include="program\code\partDebris.cpp" />
+    <ClCompile Include="program\code\Planet.cpp" />
+    <ClCompile Include="program\code\player.cpp" />
+    <ClCompile Include="program\code\playerCollision.cpp" />
+    <ClCompile Include="program\code\playerInventory.cpp" />
+    <ClCompile Include="program\code\PlayerManager.cpp" />
+    <ClCompile Include="program\code\playerUpdate.cpp" />
+    <ClCompile Include="program\code\projAttTrail.cpp" />
+    <ClCompile Include="program\code\projBullet.cpp" />
+    <ClCompile Include="program\code\projectile.cpp" />
+    <ClCompile Include="program\code\projectileFactory.cpp" />
+    <ClCompile Include="program\code\projGrenade.cpp" />
+    <ClCompile Include="program\code\projLaser.cpp" />
+    <ClCompile Include="program\code\projLightning.cpp" />
+    <ClCompile Include="program\code\projRepair.cpp" />
+    <ClCompile Include="program\code\projRocketDumb.cpp" />
+    <ClCompile Include="program\code\projSeekMissile.cpp" />
+    <ClCompile Include="program\code\projTargetLaser.cpp" />
+    <ClCompile Include="program\code\ScriptPlugin.cpp" />
+    <ClCompile Include="program\code\sensor.cpp" />
+    <ClCompile Include="program\code\sensorManager.cpp" />
+    <ClCompile Include="program\code\shapebase.cpp" />
+    <ClCompile Include="program\code\shapeCollision.cpp" />
+    <ClCompile Include="program\code\Sky.cpp" />
+    <ClCompile Include="program\code\smokePuff.cpp" />
+    <ClCompile Include="program\code\snowfall.cpp" />
+    <ClCompile Include="program\code\sound.cpp" />
+    <ClCompile Include="program\code\StarField.cpp" />
+    <ClCompile Include="program\code\staticBase.cpp" />
+    <ClCompile Include="program\code\teamGroup.cpp" />
+    <ClCompile Include="program\code\tribesShadowRenderImage.cpp" />
+    <ClCompile Include="program\code\trigger.cpp" />
+    <ClCompile Include="program\code\turret.cpp" />
+    <ClCompile Include="program\code\vehicle.cpp" />
+    <ClCompile Include="program\code\version.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="darkstar\Core\code\types.asm" />
+    <MASM Include="darkstar\Dgfx\code\b_blit.asm" />
+    <MASM Include="darkstar\Dgfx\code\g_bm.asm" />
+    <MASM Include="darkstar\Dgfx\code\g_cleara.asm" />
+    <MASM Include="darkstar\Dgfx\code\g_contxt.asm" />
+    <MASM Include="darkstar\Dgfx\code\g_timer.asm" />
+    <MASM Include="darkstar\Dgfx\code\l_raster.asm" />
+    <MASM Include="darkstar\Dgfx\code\p_rastdc.asm" />
+    <MASM Include="darkstar\Dgfx\code\p_rastn.asm" />
+    <MASM Include="darkstar\Dgfx\code\p_scane.asm" />
+    <MASM Include="darkstar\Dgfx\code\p_txrc.asm" />
+    <MASM Include="darkstar\Dgfx\code\rn_fill.asm" />
+    <MASM Include="darkstar\Dgfx\code\rn_filln.asm" />
+    <MASM Include="darkstar\Dgfx\code\rn_nontx.asm" />
+    <MASM Include="darkstar\Dgfx\code\rn_nptex.asm" />
+    <MASM Include="darkstar\Dgfx\code\rn_persp.asm" />
+    <MASM Include="darkstar\Dgfx\code\r_raster.asm" />
+    <MASM Include="darkstar\Ml\Code\m_base.asm" />
+    <MASM Include="darkstar\Ml\Code\m_dot.asm" />
+    <MASM Include="darkstar\Ml\Code\m_fix.asm" />
+    <MASM Include="darkstar\Ml\Code\m_fpuCW.asm" />
+    <MASM Include="darkstar\Ml\Code\m_log.asm" />
+    <MASM Include="darkstar\Ml\Code\m_map.asm" />
+    <MASM Include="darkstar\Ml\Code\m_matf.asm" />
+    <MASM Include="darkstar\Ml\Code\m_mdiv.asm" />
+    <MASM Include="darkstar\Ml\Code\m_mul.asm" />
+    <MASM Include="darkstar\Ml\Code\m_quatf.asm" />
+    <MASM Include="darkstar\Ml\Code\m_sqrt.asm" />
+    <MASM Include="darkstar\Ml\Code\m_trig.asm" />
+    <MASM Include="darkstar\Terrain\Code\mipBlit.asm" />
+    <MASM Include="darkstar\Ts3\code\ts_fast.asm" />
+    <MASM Include="program\code\cpuid.asm" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>
